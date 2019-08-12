@@ -1,0 +1,60 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.naskar</groupId>
+	<artifactId>fluent-query-jpa-metamodel</artifactId>
+	<packaging>jar</packaging>
+	<version>0.0.1</version>
+	<name>fluent-query-jpa-metamodel</name>
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>2.3.3</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.github.naskarlab</groupId>
+		    <artifactId>fluent-query</artifactId>
+		    <version>0.3.0</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.eclipse.persistence</groupId>
+		    <artifactId>javax.persistence</artifactId>
+		    <version>2.0.5</version>
+		    <scope>provided</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.openjpa</groupId>
+		    <artifactId>openjpa</artifactId>
+		    <version>2.4.3</version>
+		    <scope>provided</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.eclipse.persistence</groupId>
+		    <artifactId>eclipselink</artifactId>
+		    <version>2.4.2</version>
+		</dependency>			
+	</dependencies>
+	
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+	
+</project>
