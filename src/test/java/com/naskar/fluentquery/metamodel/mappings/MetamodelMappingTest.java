@@ -30,7 +30,7 @@ public class MetamodelMappingTest {
 	
 	@Parameters
     public static List<String> data() {
-        return Arrays.asList("test-openjpa", "test-eclipselink");
+        return Arrays.asList("test-openjpa", "test-eclipselink", "test-hibernate");
     }
 	
 	private String unitName;
