@@ -42,9 +42,9 @@ public class MetamodelMappingTest {
 	@Before
 	public void setup() {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory(unitName);
-	    this.mc = new MetamodelConvention();
-	    this.mc.addAll(factory);
 	    this.em = factory.createEntityManager();
+	    this.mc = new MetamodelConvention();
+	    this.mc.addAll(em);
 	}
 	
 	@After

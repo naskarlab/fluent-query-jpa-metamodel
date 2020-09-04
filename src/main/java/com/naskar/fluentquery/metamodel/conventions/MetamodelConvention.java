@@ -8,7 +8,6 @@ import java.util.Map;
 
 import javax.persistence.Column;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Table;
 import javax.persistence.metamodel.Attribute;
 import javax.persistence.metamodel.ManagedType;
@@ -28,55 +27,46 @@ public class MetamodelConvention implements Convention {
 		this.methods = new HashMap<String, Map<String, String>>();
 	}
 	
-	public void addAll(EntityManagerFactory factory) {
-		EntityManager em = null;
-		try {
+	public void addAll(EntityManager em) {
+		for(ManagedType<?> entity : em.getMetamodel().getManagedTypes()) {
 			
-			em = factory.createEntityManager();
+			Class<?> clazz = entity.getJavaType();
 			
-			for(ManagedType<?> entity : em.getMetamodel().getManagedTypes()) {
+			Table table = clazz.getAnnotation(Table.class);
+		    String tableName = table == null ? clazz.getName() : table.name();
+		    
+		    clazzes.put(clazz.getName(), tableName);
+		    
+			Map<String, String> fields = new HashMap<String, String>();
+			methods.put(clazz.getName(), fields);
+		    
+			for(Attribute<?, ?> attr : entity.getDeclaredAttributes()) {
 				
-				Class<?> clazz = entity.getJavaType();
+				String attributeName = attr.getJavaMember().getName();
 				
-				Table table = clazz.getAnnotation(Table.class);
-			    String tableName = table == null ? clazz.getName() : table.name();
-			    
-			    clazzes.put(clazz.getName(), tableName);
-			    
-				Map<String, String> fields = new HashMap<String, String>();
-				methods.put(clazz.getName(), fields);
-			    
-				for(Attribute<?, ?> attr : entity.getDeclaredAttributes()) {
-					
-					String attributeName = attr.getJavaMember().getName();
-					
-					String method = "get" + 
-						attributeName.substring(0, 1).toUpperCase() + 
-						attributeName.substring(1);
-					
-					String columnName = attributeName;
-					
-					try {
-						Field field = clazz.getDeclaredField(attributeName);
-						if(field != null) {
-							Column column = field.getAnnotation(Column.class);	
-							columnName = column.name();
+				String method = "get" + 
+					attributeName.substring(0, 1).toUpperCase() + 
+					attributeName.substring(1);
+				
+				String columnName = attributeName;
+				
+				try {
+					Field field = clazz.getDeclaredField(attributeName);
+					if(field != null) {
+						Column column = field.getAnnotation(Column.class);	
+						String name = column.name(); 
+						if(name != null && !name.isEmpty()) {
+							columnName = name;	
 						}
-					} catch(Exception e) {
-						columnName = attributeName;
 					}
-					
-					fields.put(method, columnName);
+				} catch(Exception e) {
+					columnName = attributeName;
 				}
 				
+				fields.put(method, columnName);
 			}
 			
-		} finally {
-			if(em != null) {
-				em.close();
-			}
 		}
-		
 	}
 	
 	@Override
