@@ -1,6 +1,6 @@
-# Fluent Query EclipseLink
+# Fluent Query JPA Metamodel
 
-Create Queries using only POJO classes of the JPA mappings with eclipselink.  
+Create Queries using only POJO classes of the JPA mappings.  
 
 See more example in: [Fluent Query](https://github.com/naskarlab/fluent-query)
 
@@ -16,13 +16,13 @@ See more example in: [Fluent Query](https://github.com/naskarlab/fluent-query)
 
 ```
 
-private EclipseLinkConvention mc;
+private MetamodelConvention mc;
 private EntityManager em;
 
 @Before
 public void setup() {
     EntityManagerFactory factory = Persistence.createEntityManagerFactory("test");
-    this.mc = new EclipseLinkConvention();
+    this.mc = new MetamodelConvention();
     this.mc.addAll(factory);
     this.em = factory.createEntityManager();
 }
@@ -53,8 +53,8 @@ public void testSelect() {
 
 <dependency>
     <groupId>com.github.naskarlab</groupId>
-    <artifactId>fluent-query-eclipselink</artifactId>
-    <version>0.1.1</version>
+    <artifactId>fluent-query-jpa-metamodel</artifactId>
+    <version>0.0.1</version>
 </dependency>
 ```
 
