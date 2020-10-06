@@ -89,7 +89,7 @@ public class MetamodelConvention implements Convention {
 
     @Override
     public String getNameFromMethod(List<Method> methods) {
-		if(methods.size() > 1) {
+		if(methods.isEmpty()) {
             throw new UnsupportedOperationException(methods.toString());
         }
 
