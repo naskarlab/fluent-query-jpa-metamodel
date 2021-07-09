@@ -64,13 +64,5 @@
 			<url>https://jitpack.io</url>
 		</repository>
 	</repositories>
-
-	<distributionManagement>
-	   <repository>
-		 <id>github</id>
-		 <name>GitHub OWNER Apache Maven Packages</name>
-		 <url>https://maven.pkg.github.com/naskarlab/fluent-query</url>
-	   </repository>
-	</distributionManagement>
 	
 </project>
