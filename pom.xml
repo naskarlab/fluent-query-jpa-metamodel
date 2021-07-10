@@ -2,14 +2,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.naskar</groupId>
+	<groupId>${customGroupId}</groupId>
 	<artifactId>fluent-query-jpa-metamodel</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.1</version>
+	<version>0.0.3</version>
 	<name>fluent-query-jpa-metamodel</name>
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<customGroupId>com.naskar</customGroupId>
 	</properties>
 
 	<dependencies>
