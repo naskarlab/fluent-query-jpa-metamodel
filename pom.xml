@@ -2,7 +2,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.naskar</groupId>
+	<groupId>${customGroupId}</groupId>
 	<artifactId>fluent-query-jpa-metamodel</artifactId>
 	<packaging>jar</packaging>
 	<version>0.0.1</version>
@@ -10,13 +10,14 @@
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<customGroupId>com.naskar</customGroupId>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.github.naskarlab</groupId>
 			<artifactId>fluent-query</artifactId>
-			<version>0.3.0</version>
+			<version>0.3.3</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.persistence</groupId>
@@ -28,7 +29,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>4.13.1</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -60,8 +61,12 @@
 
 	<repositories>
 		<repository>
-			<id>jitpack.io</id>
-			<url>https://jitpack.io</url>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+		<repository>
+		    <id>gitlab-maven</id>
+		    <url>https://gitlab.com/api/v4/projects/23719062/packages/maven</url>
 		</repository>
 	</repositories>
 
